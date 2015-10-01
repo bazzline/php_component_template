@@ -2,6 +2,9 @@
 
 This project aims to deliver an easy to use and free as in freedom template engine for php.
 
+@TODO
+add link to travis, scrutinizer, openhub etc.
+
 # Usage
 
 ```php
