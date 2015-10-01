@@ -57,7 +57,7 @@ class TemplateTest extends PHPUnit_Framework_TestCase
      * @param array $variables
      * @param string $expectedContent
      */
-    public function testRender($templateContent, $variables, $expectedContent)
+    public function testRenderByUsingAssignMany($templateContent, $variables, $expectedContent)
     {
         $path       = $this->filePath;
         $template   = $this->getNewTemplate($path);
@@ -65,6 +65,28 @@ class TemplateTest extends PHPUnit_Framework_TestCase
         file_put_contents($path, $templateContent);
 
         $template->assignMany($variables);
+        $content = $template->render();
+
+        $this->assertEquals($expectedContent, $content);
+        $this->assertEquals($expectedContent, (string) $template);
+    }
+
+    /**
+     * @dataProvider testCaseProvider
+     * @param string $templateContent
+     * @param array $variables
+     * @param string $expectedContent
+     */
+    public function testRenderByUsingAssignOne($templateContent, $variables, $expectedContent)
+    {
+        $path       = $this->filePath;
+        $template   = $this->getNewTemplate($path);
+
+        file_put_contents($path, $templateContent);
+
+        foreach ($variables as $key => $value) {
+            $template->assignOne($key, $value);
+        }
         $content = $template->render();
 
         $this->assertEquals($expectedContent, $content);

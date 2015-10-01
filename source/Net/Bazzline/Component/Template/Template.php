@@ -59,7 +59,7 @@ class Template
      */
     public function assignOne($key, $value)
     {
-        $this->assignMany(array($key, $value));
+        $this->assignMany(array($key => $value));
     }
 
     /**

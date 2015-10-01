@@ -44,5 +44,7 @@ git clone https://github.com/bazzline/php_component_template .
         * add unassign if needed and useful
         * add isAssigned if needed and useful
         * implement easy way to nest template in template
+* [1.1.0](https://github.com/bazzline/php_component_template/tree/1.1.0) - released at 01.10.2015
+    * fixed major bug in "assignOne" (now it is working as expected)
 * [1.0.0](https://github.com/bazzline/php_component_template/tree/1.0.0) - released at 01.10.2015
     * initial release 
