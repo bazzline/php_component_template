@@ -5,13 +5,14 @@
  */
 namespace Test\Net\Bazzline\Component\Template;
 
-use Net\Bazzline\Component\Template\Template;
+use Net\Bazzline\Component\Template\AbstractTemplate;
+use Net\Bazzline\Component\Template\FileTemplate;
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamDirectory;
 use PHPUnit_Framework_TestCase;
 
 //@todo add tests for !file_exists and !readable
-class TemplateTest extends PHPUnit_Framework_TestCase
+class FileTemplateTest extends PHPUnit_Framework_TestCase
 {
     /** @var string */
     private $filePath;
@@ -95,10 +96,10 @@ class TemplateTest extends PHPUnit_Framework_TestCase
 
     /**
      * @param null $filePath
-     * @return Template
+     * @return AbstractTemplate
      */
     private function getNewTemplate($filePath = null)
     {
-        return new Template($filePath);
+        return new FileTemplate($filePath);
     }
 }
