@@ -22,6 +22,12 @@ interface TemplateInterface
     public function assignOne($key, $value);
 
     /**
+     * @param string $key
+     * @return bool
+     */
+    public function isAssigned($key);
+
+    /**
      * @return string
      * @throws RuntimeException
      */
@@ -29,6 +35,7 @@ interface TemplateInterface
 
     /**
      * @return string
+     * @throws RuntimeException
      */
     public function __toString();
 }

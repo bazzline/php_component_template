@@ -55,6 +55,15 @@ abstract class AbstractTemplate implements TemplateInterface
     }
 
     /**
+     * @param string $key
+     * @return bool
+     */
+    public function isAssigned($key)
+    {
+        return (isset($this->variables[$key]));
+    }
+
+    /**
      * @param string $closingDelimiter
      */
     public function setClosingDelimiter($closingDelimiter)
@@ -85,19 +94,29 @@ abstract class AbstractTemplate implements TemplateInterface
 
     /**
      * @return string
+     * @throws RuntimeException
      */
     public function __toString()
     {
         return $this->render();
     }
 
-
-
     /**
      * @return string
      * @throws RuntimeException
      */
     abstract protected function getContent();
+
+    /**
+     * @param string $key
+     * @return null|mixed
+     */
+    protected function getValue($key)
+    {
+        return ($this->isAssigned($key))
+            ? $this->variables[$key]
+            : null;
+    }
 
     /**
      * @return array

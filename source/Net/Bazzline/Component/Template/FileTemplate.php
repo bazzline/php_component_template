@@ -58,7 +58,7 @@ class FileTemplate extends AbstractTemplate
     {
         $filePath = $this->filePath;
 
-        if (is_numeric($filePath)) {
+        if (is_null($filePath)) {
             throw new RuntimeException(
                 'no template file path provided'
             );

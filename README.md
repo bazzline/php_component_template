@@ -42,9 +42,12 @@ git clone https://github.com/bazzline/php_component_template .
 * upcomming
     * @todo
         * add unassign if needed and useful
-        * add isAssigned if needed and useful
         * implement easy way to nest template in template
         * add unit tests
+    * @in progress
+        * added *throws RuntimeException* to *__toString()* method description
+        * added *ViewTemplate*
+        * add *isAssigned* 
 * [2.0.0](https://github.com/bazzline/php_component_template/tree/2.0.0) - released at 02.10.2015
     * added *TemplateInterface*
     * decoupled file based template from generic template
