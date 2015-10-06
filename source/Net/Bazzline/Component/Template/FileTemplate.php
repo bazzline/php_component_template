@@ -35,11 +35,7 @@ class FileTemplate extends AbstractTemplate
      */
     public function setFilePath($filePath)
     {
-        if (!file_exists($filePath)) {
-            throw new InvalidArgumentException(
-                'file path: "' . $filePath . '" does not exist'
-            );
-        }
+        $this->throwRuntimeExceptionIfFilePathIsInvalid($filePath);
 
         if (!is_readable($filePath)) {
             throw new InvalidArgumentException(
@@ -56,13 +52,9 @@ class FileTemplate extends AbstractTemplate
      */
     protected function getContent()
     {
-        $filePath = $this->filePath;
+        $filePath = $this->getFilePath();
 
-        if (is_null($filePath)) {
-            throw new RuntimeException(
-                'no template file path provided'
-            );
-        }
+        $this->throwRuntimeExceptionIfFilePathIsInvalid($filePath);
 
         $content = file_get_contents($filePath);
 
@@ -73,5 +65,38 @@ class FileTemplate extends AbstractTemplate
         }
 
         return $content;
+    }
+
+    /**
+     * @return null|string
+     */
+    protected function getFilePath()
+    {
+        return $this->filePath;
+    }
+
+    /**
+     * @param string $filePath
+     * @throws RuntimeException
+     */
+    protected function throwRuntimeExceptionIfFilePathIsInvalid($filePath)
+    {
+        if (is_null($filePath)) {
+            throw new RuntimeException(
+                'file path must be a valid string'
+            );
+        }
+
+        if (!file_exists($filePath)) {
+            throw new InvalidArgumentException(
+                'file path: "' . $filePath . '" does not exist'
+            );
+        }
+
+        if (!is_readable($filePath)) {
+            throw new RuntimeException(
+                'file path: "' . $filePath . '" is not readable'
+            );
+        }
     }
 }

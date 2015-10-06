@@ -121,6 +121,14 @@ abstract class AbstractTemplate implements TemplateInterface
     /**
      * @return array
      */
+    protected function getValues()
+    {
+        return $this->variables;
+    }
+
+    /**
+     * @return array
+     */
     private function getVariablesWithDelimiters()
     {
         $prefix     = $this->openDelimiter;

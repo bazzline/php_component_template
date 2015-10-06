@@ -5,14 +5,13 @@
  */
 namespace Test\Net\Bazzline\Component\Template;
 
-use Net\Bazzline\Component\Template\AbstractTemplate;
-use Net\Bazzline\Component\Template\FileTemplate;
+use Net\Bazzline\Component\Template\ViewTemplate;
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamDirectory;
 use PHPUnit_Framework_TestCase;
 
 //@todo add tests for !file_exists and !readable
-class FileTemplateTest extends PHPUnit_Framework_TestCase
+class ViewTemplateTest extends PHPUnit_Framework_TestCase
 {
     /** @var string */
     private $filePath;
@@ -37,8 +36,8 @@ class FileTemplateTest extends PHPUnit_Framework_TestCase
             <html>
                 <head></head>
                 <body>
-                    <h1>{headline}</h1>
-                    <p>{content}</p>
+                    <h1><?php echo $headline; ?></h1>
+                    <p><?php echo $this->content; ?></p>
                 </body>
             </html>
         ';
@@ -47,7 +46,7 @@ class FileTemplateTest extends PHPUnit_Framework_TestCase
             'content with all available variables' => array(
                 $defaultContent,
                 array('headline' => 'foo', 'content' => 'bar'),
-                str_replace(array('{headline}', '{content}'), array('foo', 'bar'), $defaultContent)
+                str_replace(array('<?php echo $headline; ?>', '<?php echo $this->content; ?>'), array('foo', 'bar'), $defaultContent)
             )
         );
     }
@@ -96,10 +95,10 @@ class FileTemplateTest extends PHPUnit_Framework_TestCase
 
     /**
      * @param null $filePath
-     * @return FileTemplate
+     * @return ViewTemplate
      */
     private function getNewTemplate($filePath = null)
     {
-        return new FileTemplate($filePath);
+        return new ViewTemplate($filePath);
     }
 }
