@@ -21,7 +21,7 @@ Currently, this component tries to solve three problems when dealing with php te
 [ComplexFileBasedTemplate](https://github.com/bazzline/php_component_template/blob/master/source/Net/Bazzline/Component/Template/ComplexFileBasedTemplate.php) solves the problem replacing complex content stored in a file. This is commonly known as the view in php frameworks.
 
 What is a complex content?
-Complex content contains decisions like *$isFoo = ($bar === 'foo'); if ($isFoo) { /* ... */ } else { /* display something else */*.
+Complex content contains decisions like *$isFoo = ($bar === 'foo'); if ($isFoo) { /\* ... \*/ } else { /\* display something else \*/ }*.
 
 What kind of complex content should I use?
 Well, it is up to you and the code is pretty flexible. My two cents are, limit yourself to "foreach", "if/else" is one step further to "adding business logic to the template", *switch* is another step into this direction.
