@@ -47,6 +47,10 @@ git clone https://github.com/bazzline/php_component_template .
     composer require net_bazzline/php_component_template:dev-master
 ```
 
+# Links
+
+* [StringTemplate](https://github.com/nicmart/StringTemplate)
+
 # API
 
 *@TODO
