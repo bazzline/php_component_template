@@ -17,7 +17,7 @@ Currently, this component tries to solve three problems when dealing with php te
 [RuntimeContentBasedTemplate](https://github.com/bazzline/php_component_template/blob/master/source/Net/Bazzline/Component/Template/RuntimeContentBasedTemplate.php) solve the problem to replacing content stored in a string.
 
 [FileBasedTemplate](https://github.com/bazzline/php_component_template/blob/master/source/Net/Bazzline/Component/Template/FileBasedTemplate.php) solves the problem replacing content stored in a file.
-```
+
 [ComplexFileBasedTemplate](https://github.com/bazzline/php_component_template/blob/master/source/Net/Bazzline/Component/Template/ComplexFileBasedTemplate.php) solves the problem replacing complex content stored in a file. This is commonly known as the view in php frameworks.
 
 What is a complex content?
