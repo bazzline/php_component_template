@@ -13,12 +13,18 @@ This project does not aim to shake on the throne of the big template engine avai
 Personally, I like the [php-text-template](https://github.com/sebastianbergmann/php-text-template) but sebastian has a different approach in mind (writing something to a file). Adding my goals to his project would add more complexity to his library.
 
 Currently, this component tries to solve three problems when dealing with php templates.
+
 [RuntimeContentBasedTemplate](https://github.com/bazzline/php_component_template/blob/master/source/Net/Bazzline/Component/Template/RuntimeContentBasedTemplate.php) solve the problem to replacing content stored in a string.
+
 [FileBasedTemplate](https://github.com/bazzline/php_component_template/blob/master/source/Net/Bazzline/Component/Template/FileBasedTemplate.php) solves the problem replacing content stored in a file.
+```
 [ComplexFileBasedTemplate](https://github.com/bazzline/php_component_template/blob/master/source/Net/Bazzline/Component/Template/ComplexFileBasedTemplate.php) solves the problem replacing complex content stored in a file. This is commonly known as the view in php frameworks.
 
-What is a complex content? Complex content contains decisions like *$isFoo = ($bar === 'foo'); if ($isFoo) { /* ... */ } else { /* display something else */*.
-What kind of complex content should I use? Well, it is up to you and the code is pretty flexible. My two cents are, limit yourself to "foreach", "if/else" is one step further to "adding business logic to the template", *switch* is another step into this direction.
+What is a complex content?
+Complex content contains decisions like *$isFoo = ($bar === 'foo'); if ($isFoo) { /* ... */ } else { /* display something else */*.
+
+What kind of complex content should I use?
+Well, it is up to you and the code is pretty flexible. My two cents are, limit yourself to "foreach", "if/else" is one step further to "adding business logic to the template", *switch* is another step into this direction.
 
 # Usage
 
@@ -26,9 +32,11 @@ What kind of complex content should I use? Well, it is up to you and the code is
 $template = new Template('path/to/the/template/file');
 $template->assignOne($key, $value);
 //...
-$template->render();
+echo $template->render();
 //or
-(string) $template;
+echo (string) $template;
+//or
+echo $template();
 ```
 
 # Install
@@ -74,6 +82,7 @@ git clone https://github.com/bazzline/php_component_template .
     * renamed *StringTemplate* to *RuntimeContentBasedTemplate*
     * renamed *ViewTemplate* to *ComplexFileBasedTemplate*
     * shifted order from *filePath* and *variables* in the constructor of *RuntimeContentBasedTemplate* and *FileBasedContent*
+    * started link section
     * updated *ComplexFileBasedTemplate* variable handling by adding "EXTR_SKIP" to the *extract* method
     * updated dependency
 * [2.1.0](https://github.com/bazzline/php_component_template/tree/2.1.0) - released at 06.10.2015
