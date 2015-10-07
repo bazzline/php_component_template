@@ -10,26 +10,26 @@ use RuntimeException;
 
 abstract class AbstractTemplate implements TemplateInterface
 {
-    /** @var string */
-    private $closingDelimiter;
-
-    /** @var string */
-    private $openDelimiter;
-
     /** @var array */
     private $variables;
 
     /**
      * @param array $variables
-     * @param string $openDelimiter
-     * @param string $closingDelimiter
-     * @throws InvalidArgumentException
      */
-    public function __construct($variables = array(), $openDelimiter = '{', $closingDelimiter = '}')
+    public function __construct($variables = array())
     {
         $this->assignMany($variables, false);
-        $this->setOpenDelimiter($openDelimiter);
-        $this->setClosingDelimiter($closingDelimiter);
+    }
+
+    /**
+     * @param array $variables
+     * @return string
+     */
+    public function __invoke($variables = array())
+    {
+        $this->assignMany($variables);
+
+        return $this->render();
     }
 
     /**
@@ -64,32 +64,21 @@ abstract class AbstractTemplate implements TemplateInterface
     }
 
     /**
-     * @param string $closingDelimiter
-     */
-    public function setClosingDelimiter($closingDelimiter)
-    {
-        $this->closingDelimiter = $closingDelimiter;
-    }
-
-    /**
-     * @param string $openDelimiter
-     */
-    public function setOpenDelimiter($openDelimiter)
-    {
-        $this->openDelimiter = $openDelimiter;
-    }
-
-    /**
      * @return string
      * @throws RuntimeException
      */
     public function render()
     {
         $content    = $this->getContent();
-        $variables  = $this->getVariablesWithDelimiters();
+        $variables  = $this->getVariables();
         $keys       = array_keys($variables);
 
         return str_replace($keys, $variables, $content);
+    }
+
+    public function reset()
+    {
+        $this->assignMany(array(), false);
     }
 
     /**
@@ -111,7 +100,7 @@ abstract class AbstractTemplate implements TemplateInterface
      * @param string $key
      * @return null|mixed
      */
-    protected function getValue($key)
+    protected function getValueByKeyOrNull($key)
     {
         return ($this->isAssigned($key))
             ? $this->variables[$key]
@@ -121,25 +110,8 @@ abstract class AbstractTemplate implements TemplateInterface
     /**
      * @return array
      */
-    protected function getValues()
+    protected function getVariables()
     {
         return $this->variables;
-    }
-
-    /**
-     * @return array
-     */
-    private function getVariablesWithDelimiters()
-    {
-        $prefix     = $this->openDelimiter;
-        $suffix     = $this->closingDelimiter;
-        $variables  = $this->variables;
-        $array      = array();  //@todo find a better name
-
-        foreach ($variables as $key => $value) {
-            $array[$prefix . $key . $suffix] = $value;
-        }
-
-        return $array;
     }
 }

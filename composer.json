@@ -1,15 +1,15 @@
 {
     "name": "net_bazzline/php_component_template",
     "description": "free as in freedom free software template engine for php",
-    "keywords": ["php", "component", "template", "invoke", "reusable", "free as in freedom"],
+    "keywords": ["php", "component", "template", "view", "no dependency", "fast", "easy to use", "__toString", "invoke", "reusable", "free as in freedom"],
     "type": "library",
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.3.3"
     },
     "require-dev": {
-        "mikey179/vfsstream": "1.5.0",
-        "phpunit/phpunit": "4.8.*"
+        "mikey179/vfsstream": "1.6.0",
+        "phpunit/phpunit": ">=4.8.11"
     },
     "license": "LGPLv3",
     "authors": [

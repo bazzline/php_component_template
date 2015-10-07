@@ -8,9 +8,8 @@ namespace Net\Bazzline\Component\Template;
 use InvalidArgumentException;
 use RuntimeException;
 
-class ViewTemplate extends FileTemplate
+class ComplexFileBasedTemplate extends AbstractFileBasedTemplate
 {
-
     /**
      * @param null|string $filePath
      * @param array $variables
@@ -18,7 +17,7 @@ class ViewTemplate extends FileTemplate
      */
     public function __construct($filePath = null, $variables = array())
     {
-        parent::__construct($filePath, $variables, '$', '');
+        parent::__construct($variables, $filePath);
     }
 
     /**
@@ -28,7 +27,7 @@ class ViewTemplate extends FileTemplate
      */
     public function __get($name)
     {
-        return $this->getValue($name);
+        return $this->getValueByKeyOrNull($name);
     }
 
     /**
@@ -38,12 +37,12 @@ class ViewTemplate extends FileTemplate
     public function render()
     {
         $filePath   = $this->getFilePath();
-        $values     = $this->getValues();
+        $variables  = $this->getVariables();
 
         $this->throwRuntimeExceptionIfFilePathIsInvalid($filePath);
 
         //enable support for $foo
-        extract($values);
+        extract($variables, EXTR_SKIP);
 
         ob_start();
         include $filePath;

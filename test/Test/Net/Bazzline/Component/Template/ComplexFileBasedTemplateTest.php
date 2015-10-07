@@ -5,13 +5,13 @@
  */
 namespace Test\Net\Bazzline\Component\Template;
 
-use Net\Bazzline\Component\Template\ViewTemplate;
+use Net\Bazzline\Component\Template\ComplexFileBasedTemplate;
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamDirectory;
 use PHPUnit_Framework_TestCase;
 
 //@todo add tests for !file_exists and !readable
-class ViewTemplateTest extends PHPUnit_Framework_TestCase
+class ComplexFileBasedTemplateTest extends PHPUnit_Framework_TestCase
 {
     /** @var string */
     private $filePath;
@@ -47,6 +47,11 @@ class ViewTemplateTest extends PHPUnit_Framework_TestCase
                 $defaultContent,
                 array('headline' => 'foo', 'content' => 'bar'),
                 str_replace(array('<?php echo $headline; ?>', '<?php echo $this->content; ?>'), array('foo', 'bar'), $defaultContent)
+            ),
+            'content with local created and existing variable' => array(
+                '<?php $headline = \'foobar\'; ?>' . PHP_EOL . $defaultContent,
+                array('headline' => 'foo', 'content' => 'bar'),
+                str_replace(array('<?php echo $headline; ?>', '<?php echo $this->content; ?>'), array('foobar', 'bar'), $defaultContent)
             )
         );
     }
@@ -94,11 +99,30 @@ class ViewTemplateTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @dataProvider testCaseProvider
+     * @param string $templateContent
+     * @param array $variables
+     * @param string $expectedContent
+     */
+    public function testRenderByUsingInvoke($templateContent, $variables, $expectedContent)
+    {
+        $path       = $this->filePath;
+        $template   = $this->getNewTemplate($path);
+
+        file_put_contents($path, $templateContent);
+
+        $content = $template($variables);
+
+        $this->assertEquals($expectedContent, $content);
+        $this->assertEquals($expectedContent, (string) $template);
+    }
+
+    /**
      * @param null $filePath
-     * @return ViewTemplate
+     * @return ComplexFileBasedTemplate
      */
     private function getNewTemplate($filePath = null)
     {
-        return new ViewTemplate($filePath);
+        return new ComplexFileBasedTemplate($filePath);
     }
 }

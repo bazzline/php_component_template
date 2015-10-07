@@ -1,37 +1,49 @@
 <?php
 /**
  * @author stev leibelt <artodeto@bazzline.net>
- * @since: 2015-10-02
+ * @since 2015-10-07
  */
 namespace Net\Bazzline\Component\Template;
 
 use InvalidArgumentException;
 use RuntimeException;
 
-class FileTemplate extends AbstractTemplate
+abstract class AbstractFileBasedTemplate extends AbstractTemplate
 {
     /** @var null|string */
     private $filePath;
 
     /**
-     * @param null|string $filePath
      * @param array $variables
-     * @param string $openDelimiter
-     * @param string $closingDelimiter
+     * @param null|string $filePath
      * @throws InvalidArgumentException
+     * @throws RuntimeException
      */
-    public function __construct($filePath = null, $variables = array(), $openDelimiter = '{', $closingDelimiter = '}')
+    public function __construct($variables = array(), $filePath = null)
     {
-        parent::__construct($variables, $openDelimiter, $closingDelimiter);
+        parent::__construct($variables);
 
-        if (!is_null($filePath)) {
-            $this->setFilePath($filePath);
-        }
+        $this->setFilePathIfProvided($filePath);
+    }
+
+    /**
+     * @param array $variables
+     * @param null $filePath
+     * @return string
+     * @throws InvalidArgumentException
+     * @throws RuntimeException
+     */
+    public function __invoke($variables = array(), $filePath = null)
+    {
+        $this->setFilePathIfProvided($filePath);
+
+        return parent::__invoke($variables);
     }
 
     /**
      * @param string $filePath
      * @throws InvalidArgumentException
+     * @throws RuntimeException
      */
     public function setFilePath($filePath)
     {
@@ -97,6 +109,17 @@ class FileTemplate extends AbstractTemplate
             throw new RuntimeException(
                 'file path: "' . $filePath . '" is not readable'
             );
+        }
+    }
+
+    /**
+     * @param null|string $filePath
+     * @throws RuntimeException
+     */
+    protected function setFilePathIfProvided($filePath = null)
+    {
+        if (!is_null($filePath)) {
+            $this->setFilePath($filePath);
         }
     }
 }

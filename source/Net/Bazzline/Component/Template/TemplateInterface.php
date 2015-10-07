@@ -33,6 +33,8 @@ interface TemplateInterface
      */
     public function render();
 
+    public function reset();
+
     /**
      * @return string
      * @throws RuntimeException
