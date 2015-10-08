@@ -1,32 +1,15 @@
 <?php
 /**
  * @author stev leibelt <artodeto@bazzline.net>
- * @since 2015-10-01
+ * @since 2015-10-08
  */
 namespace Test\Net\Bazzline\Component\Template;
 
-use Net\Bazzline\Component\Template\FileBasedTemplate;
-use org\bovigo\vfs\vfsStream;
-use org\bovigo\vfs\vfsStreamDirectory;
+use Net\Bazzline\Component\Template\RuntimeContentBasedTemplate;
 use PHPUnit_Framework_TestCase;
 
-//@todo add tests for !file_exists and !readable
-class FileBasedTemplateTest extends PHPUnit_Framework_TestCase
+class RuntimeContentBasedTemplateTest extends PHPUnit_Framework_TestCase
 {
-    /** @var string */
-    private $filePath;
-
-    /** @var vfsStreamDirectory */
-    private $fileSystem;
-
-    protected function setUp()
-    {
-        $file               = vfsStream::newFile('template');
-        $this->fileSystem   = vfsStream::setup();
-        $this->fileSystem->addChild($file);
-        $this->filePath     = $file->url();
-    }
-
     /**
      * @return array
      */
@@ -59,10 +42,7 @@ class FileBasedTemplateTest extends PHPUnit_Framework_TestCase
      */
     public function testRenderByUsingAssignMany($templateContent, array $variables, $expectedContent)
     {
-        $path       = $this->filePath;
-        $template   = $this->getNewTemplate($path);
-
-        file_put_contents($path, $templateContent);
+        $template   = $this->getNewTemplate($templateContent);
 
         $template->assignMany($variables);
         $content = $template->render();
@@ -79,10 +59,7 @@ class FileBasedTemplateTest extends PHPUnit_Framework_TestCase
      */
     public function testRenderByUsingAssignOne($templateContent, array $variables, $expectedContent)
     {
-        $path       = $this->filePath;
-        $template   = $this->getNewTemplate($path);
-
-        file_put_contents($path, $templateContent);
+        $template   = $this->getNewTemplate($templateContent);
 
         foreach ($variables as $key => $value) {
             $template->assignOne($key, $value);
@@ -101,10 +78,7 @@ class FileBasedTemplateTest extends PHPUnit_Framework_TestCase
      */
     public function testRenderByUsingInvoke($templateContent, array $variables, $expectedContent)
     {
-        $path       = $this->filePath;
-        $template   = $this->getNewTemplate($path);
-
-        file_put_contents($path, $templateContent);
+        $template   = $this->getNewTemplate($templateContent);
 
         $content = $template($variables);
 
@@ -113,15 +87,15 @@ class FileBasedTemplateTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @param null|string $filePath
-     * @return FileBasedTemplate
+     * @param null|string $content
+     * @return RuntimeContentBasedTemplate
      */
-    private function getNewTemplate($filePath = null)
+    private function getNewTemplate($content = null)
     {
-        $template = new FileBasedTemplate();
+        $template = new RuntimeContentBasedTemplate();
 
-        if (!is_null($filePath)) {
-            $template->setFilePath($filePath);
+        if (!is_null($content)) {
+            $template->setContent($content);
         }
 
         return $template;

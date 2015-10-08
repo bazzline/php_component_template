@@ -62,7 +62,7 @@ class ComplexFileBasedTemplateTest extends PHPUnit_Framework_TestCase
      * @param array $variables
      * @param string $expectedContent
      */
-    public function testRenderByUsingAssignMany($templateContent, $variables, $expectedContent)
+    public function testRenderByUsingAssignMany($templateContent, array $variables, $expectedContent)
     {
         $path       = $this->filePath;
         $template   = $this->getNewTemplate($path);
@@ -82,7 +82,7 @@ class ComplexFileBasedTemplateTest extends PHPUnit_Framework_TestCase
      * @param array $variables
      * @param string $expectedContent
      */
-    public function testRenderByUsingAssignOne($templateContent, $variables, $expectedContent)
+    public function testRenderByUsingAssignOne($templateContent, array $variables, $expectedContent)
     {
         $path       = $this->filePath;
         $template   = $this->getNewTemplate($path);
@@ -104,7 +104,7 @@ class ComplexFileBasedTemplateTest extends PHPUnit_Framework_TestCase
      * @param array $variables
      * @param string $expectedContent
      */
-    public function testRenderByUsingInvoke($templateContent, $variables, $expectedContent)
+    public function testRenderByUsingInvoke($templateContent, array $variables, $expectedContent)
     {
         $path       = $this->filePath;
         $template   = $this->getNewTemplate($path);
@@ -123,6 +123,12 @@ class ComplexFileBasedTemplateTest extends PHPUnit_Framework_TestCase
      */
     private function getNewTemplate($filePath = null)
     {
-        return new ComplexFileBasedTemplate($filePath);
+        $template = new ComplexFileBasedTemplate();
+
+        if (!is_null($filePath)) {
+            $template->setFilePath($filePath);
+        }
+
+        return $template;
     }
 }

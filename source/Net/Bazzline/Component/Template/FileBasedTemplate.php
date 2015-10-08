@@ -17,18 +17,17 @@ class FileBasedTemplate extends AbstractFileBasedTemplate implements DelimiterIn
     private $openingDelimiter;
 
     /**
-     * @param null|string $filePath
      * @param array $variables
+     * @param null|string $filePath
      * @param string $openingDelimiter
      * @param string $closingDelimiter
      * @throws InvalidArgumentException
      */
-    public function __construct($filePath = null, $variables = array(), $openingDelimiter = '{', $closingDelimiter = '}')
+    public function __construct($variables = array(), $filePath = null, $openingDelimiter = '{', $closingDelimiter = '}')
     {
         parent::__construct($variables, $filePath);
 
-        $this->setClosingDelimiter($closingDelimiter);
-        $this->setOpeningDelimiter($openingDelimiter);
+        $this->setPropertiesIfProvided($closingDelimiter, $openingDelimiter);
     }
 
     /**
@@ -44,12 +43,7 @@ class FileBasedTemplate extends AbstractFileBasedTemplate implements DelimiterIn
     {
         parent::__invoke($variables, $filePath);
 
-        if (!is_null($closingDelimiter)) {
-            $this->setClosingDelimiter($closingDelimiter);
-        }
-        if (!is_null($openingDelimiter)) {
-            $this->setOpeningDelimiter($openingDelimiter);
-        }
+        $this->setPropertiesIfProvided($closingDelimiter, $openingDelimiter);
 
         return $this->render();
     }
@@ -85,5 +79,20 @@ class FileBasedTemplate extends AbstractFileBasedTemplate implements DelimiterIn
         }
 
         return $array;
+    }
+
+    /**
+     * @param null|string $closingDelimiter
+     * @param null|string $openingDelimiter
+     */
+    private function setPropertiesIfProvided($closingDelimiter = null, $openingDelimiter = null)
+    {
+        if (!is_null($closingDelimiter)) {
+            $this->setClosingDelimiter($closingDelimiter);
+        }
+
+        if (!is_null($openingDelimiter)) {
+            $this->setOpeningDelimiter($openingDelimiter);
+        }
     }
 }

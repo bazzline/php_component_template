@@ -11,16 +11,6 @@ use RuntimeException;
 class ComplexFileBasedTemplate extends AbstractFileBasedTemplate
 {
     /**
-     * @param null|string $filePath
-     * @param array $variables
-     * @throws InvalidArgumentException
-     */
-    public function __construct($filePath = null, $variables = array())
-    {
-        parent::__construct($variables, $filePath);
-    }
-
-    /**
      * enables support for $this->foo
      * @param string $name
      * @return null|mixed

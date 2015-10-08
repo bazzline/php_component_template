@@ -30,7 +30,7 @@ class RuntimeContentBasedTemplate extends AbstractTemplate implements DelimiterI
     {
         parent::__construct($variables);
 
-        $this->setPropertiesIfProvided($content, $openingDelimiter, $closingDelimiter);
+        $this->setPropertiesIfProvided($content, $closingDelimiter, $openingDelimiter);
     }
 
     /**
@@ -44,7 +44,7 @@ class RuntimeContentBasedTemplate extends AbstractTemplate implements DelimiterI
      */
     public function __invoke($variables = array(), $content = null, $openingDelimiter = null, $closingDelimiter = null)
     {
-        $this->setPropertiesIfProvided($content, $openingDelimiter, $closingDelimiter);
+        $this->setPropertiesIfProvided($content, $closingDelimiter, $openingDelimiter);
 
         return parent::__invoke($variables);
     }
@@ -65,7 +65,7 @@ class RuntimeContentBasedTemplate extends AbstractTemplate implements DelimiterI
     {
         $content = (string) $content;
 
-        if (strlen($content < 1)) {
+        if (strlen($content) < 1) {
             throw new InvalidArgumentException(
                 'content must have a string length of at least one character'
             );
@@ -95,6 +95,23 @@ class RuntimeContentBasedTemplate extends AbstractTemplate implements DelimiterI
         }
 
         return $this->content;
+    }
+
+    /**
+     * @return array
+     */
+    protected function getVariables()
+    {
+        $prefix     = $this->openingDelimiter;
+        $suffix     = $this->closingDelimiter;
+        $variables  = parent::getVariables();
+        $array      = array();  //@todo find a better name
+
+        foreach ($variables as $key => $value) {
+            $array[$prefix . $key . $suffix] = $value;
+        }
+
+        return $array;
     }
 
     /**
