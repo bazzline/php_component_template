@@ -94,6 +94,7 @@ git clone https://github.com/bazzline/php_component_template .
         * add examples
         * add refuse/take/resign if needed and useful
         * add unit tests
+        * implement caching
         * implement easy way to nest template in template
 * [3.0.0](https://github.com/bazzline/php_component_template/tree/3.0.0) - released at 09.10.2015
     * added links to travis, scrutinizer, openhub, versioneye
