@@ -21,6 +21,8 @@ This project does not aim to shake on the throne of the big template engine avai
 
 Personally, I like the [php-text-template](https://github.com/sebastianbergmann/php-text-template) but sebastian has a different approach in mind (writing something to a file). Adding my goals to his project would add more complexity to his library.
 
+## Available Templates
+
 Currently, this component tries to solve three problems when dealing with php templates.
 
 [RuntimeContentBasedTemplate](https://github.com/bazzline/php_component_template/blob/master/source/Net/Bazzline/Component/Template/RuntimeContentBasedTemplate.php) solve the problem to replacing content stored in a string.
@@ -29,10 +31,14 @@ Currently, this component tries to solve three problems when dealing with php te
 
 [ComplexFileBasedTemplate](https://github.com/bazzline/php_component_template/blob/master/source/Net/Bazzline/Component/Template/ComplexFileBasedTemplate.php) solves the problem replacing complex content stored in a file. This is commonly known as the view in php frameworks.
 
-What is a complex content?
+## Notes
+
+### What is a complex content?
+
 Complex content contains decisions like *$isFoo = ($bar === 'foo'); if ($isFoo) { /\* ... \*/ } else { /\* display something else \*/ }*.
 
-What kind of complex content should I use?
+### What kind of complex content should I use?
+
 Well, it is up to you and the code is pretty flexible. My two cents are, limit yourself to "foreach", "if/else" is one step further to "adding business logic to the template", *switch* is another step into this direction.
 
 # Usage
