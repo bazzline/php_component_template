@@ -87,10 +87,6 @@ git clone https://github.com/bazzline/php_component_template .
 
 [API](http://www.bazzline.net/a9ecef3b441a70ebebc0488a427c61fac06cd3aa/index.html) is available at [bazzline.net](http://www.bazzline.net).
 
-# Links to other libraries
-
-* [StringTemplate](https://github.com/nicmart/StringTemplate)
-
 # History
 
 * upcomming
@@ -126,3 +122,17 @@ git clone https://github.com/bazzline/php_component_template .
     * fixed major bug in "assignOne" (now it is working as expected)
 * [1.0.0](https://github.com/bazzline/php_component_template/tree/1.0.0) - released at 01.10.2015
     * initial release 
+
+# Links to other libraries
+
+* [crazedsanity template](https://github.com/crazedsanity/template)
+* [latte](https://github.com/nette/latte)
+* [mindy template](https://github.com/studio107/Mindy_Template)
+* [php-liquid](https://github.com/harrydeluxe/php-liquid)
+* [raintpl3](https://github.com/rainphp/raintpl3)
+* [rock template](https://github.com/romeOz/rock-template)
+* [smarty](https://github.com/smarty-php/smarty)
+* [ste](https://github.com/SugiPHP/STE)
+* [StringTemplate](https://github.com/nicmart/StringTemplate)
+* [twig](https://github.com/memio/twig-template-engine)
+* [and even more ...](https://packagist.org/search/?search_query%5Bquery%5D=template+engine)
