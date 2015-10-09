@@ -38,13 +38,26 @@ Well, it is up to you and the code is pretty flexible. My two cents are, limit y
 # Usage
 
 ```php
-$template = new Template('path/to/the/template/file');
-$template->assignOne($key, $value);
-//...
+use Net\Bazzline\Component\Template\RuntimeContentBasedTemplate;
+
+//create a instance
+$template = new RuntimeContentBasedTemplate();
+
+//set content
+$template->setContent('there is no {one} without a {two}');
+
+//assign variable one by one ...
+$template->assignOne('one', 'foo');
+//... or by providing an array
+$template->assignMany(array('one' => 'foo'));
+
+//you can render it in different ways
+//1) explicit calling the method
 echo $template->render();
-//or
+//2) casting it to a string
 echo (string) $template;
-//or
+//3) using it as a function
+//  you can also provide all optional parameters like in the constructor
 echo $template();
 ```
 
