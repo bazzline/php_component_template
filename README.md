@@ -1,6 +1,6 @@
 # Template Engine for PHP
 
-This project aims to deliver an easy to use and free as in freedom fast template engine for php.
+This project aims to deliver an easy to use, free as in freedom and fast template engine for php (code name: yepte - yet another php template engine).
 
 The build status of the current master branch is tracked by Travis CI:
 [![Build Status](https://travis-ci.org/bazzline/php_component_template.png?branch=master)](http://travis-ci.org/bazzline/php_component_template)
