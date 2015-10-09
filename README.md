@@ -2,8 +2,17 @@
 
 This project aims to deliver an easy to use and free as in freedom fast template engine for php.
 
-@TODO
-add link to travis, scrutinizer, openhub etc.
+The build status of the current master branch is tracked by Travis CI:
+[![Build Status](https://travis-ci.org/bazzline/php_component_template.png?branch=master)](http://travis-ci.org/bazzline/php_component_template)
+[![Latest stable](https://img.shields.io/packagist/v/net_bazzline/php_component_template.svg)](https://packagist.org/packages/net_bazzline/php_component_template)
+
+The scrutinizer status are:
+[![code quality](https://scrutinizer-ci.com/g/bazzline/php_component_template/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bazzline/php_component_template/) | [![build status](https://scrutinizer-ci.com/g/bazzline/php_component_template/badges/build.png?b=master)](https://scrutinizer-ci.com/g/bazzline/php_component_template/)
+
+The versioneye status is:
+[![Dependency Status](https://www.versioneye.com/user/projects/56181f0cb06d5000090013f9/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56181f0cb06d5000090013f9)
+
+Take a look on [openhub.net](https://www.openhub.net/p/php_component_template).
 
 # Why
 
@@ -55,24 +64,24 @@ git clone https://github.com/bazzline/php_component_template .
     composer require net_bazzline/php_component_template:dev-master
 ```
 
-# Links
-
-* [StringTemplate](https://github.com/nicmart/StringTemplate)
-
 # API
 
-*@TODO
-[API](http://www.bazzline.net/efef04b8bf3867f969285f1160d52ee8a719940e/index.html) is available at [bazzline.net](http://www.bazzline.net).
+[API](http://www.bazzline.net/a9ecef3b441a70ebebc0488a427c61fac06cd3aa/index.html) is available at [bazzline.net](http://www.bazzline.net).
+
+# Links to other libraries
+
+* [StringTemplate](https://github.com/nicmart/StringTemplate)
 
 # History
 
 * upcomming
     * @todo
         * add examples
-        * add unassign if needed and useful
-        * implement easy way to nest template in template
+        * add refuse/take/resign if needed and useful
         * add unit tests
+        * implement easy way to nest template in template
 * [3.0.0](https://github.com/bazzline/php_component_template/tree/3.0.0) - upcomming
+    * added links to travis, scrutinizer, openhub, versioneye
     * added the *DelimiterInterface*
     * implemented *__invoke* in all templates to speed up usage and rendering
     * implemented *reset*
