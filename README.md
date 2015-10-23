@@ -16,7 +16,7 @@ Take a look on [openhub.net](https://www.openhub.net/p/php_component_template).
 
 # Why
 
-I wanted to create a lean (in matter of lines of code and number of files) fast and expendable template engine for php.
+I wanted to create a lean (in matter of lines of code and number of files) fast, extendable but expendable template engine for php.
 This project does not aim to shake on the throne of the big template engine available for php. They have different goals, more manpower and different ideas behind.
 
 Personally, I like the [php-text-template](https://github.com/sebastianbergmann/php-text-template) but sebastian has a different approach in mind (writing something to a file). Adding my goals to his project would add more complexity to his library.
@@ -35,11 +35,22 @@ Currently, this component tries to solve three problems when dealing with php te
 
 ### What is a complex content?
 
-Complex content contains decisions like *$isFoo = ($bar === 'foo'); if ($isFoo) { /\* ... \*/ } else { /\* display something else \*/ }*.
+Complex content contains code like:
+
+```php
+$isFoo = ($bar === 'foo');
+if ($isFoo) {
+     /* ... */ 
+} else { 
+    /*  ... something else */ 
+}
+```
 
 ### What kind of complex content should I use?
 
-Well, it is up to you and the code is pretty flexible. My two cents are, limit yourself to "foreach", "if/else" is one step further to "adding business logic to the template", *switch* is another step into this direction.
+Well, it is up to you and the code is pretty flexible.
+
+My two cents are, limit yourself to *foreach*. *if/else* is one step further to "adding business logic to the template". *switch* is another step into this direction.
 
 # Usage
 
@@ -97,6 +108,7 @@ git clone https://github.com/bazzline/php_component_template .
         * implement caching
         * implement easy way to nest template in template
     * added "[TemplateDumper](https://github.com/bazzline/php_component_template/blob/master/source/Net/Bazzline/Component/Template/TemplateDumper.php)" to easy up dumping rendered content to a file
+    * easy up reading readme
 * [3.0.0](https://github.com/bazzline/php_component_template/tree/3.0.0) - released at 09.10.2015
     * added links to travis, scrutinizer, openhub, versioneye
     * added the *DelimiterInterface*
