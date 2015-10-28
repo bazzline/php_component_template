@@ -126,8 +126,8 @@ composer require net_bazzline/php_component_template:dev-master
         * add unit tests
         * implement caching
 * [3.1.0](https://github.com/bazzline/php_component_template/tree/3.1.0) - released at 28.10.2015
-    * added [CallableComplexFileBasedTemplateManager](https://github.com/bazzline/php_component_template/blob/master/source/Net/Bazzline/Component/Template/CallableComplexFileBasedTemplateManager.php) which allows registering callable to easy up reusing code and nest templates in templates
-    * added "[TemplateDumper](https://github.com/bazzline/php_component_template/blob/master/source/Net/Bazzline/Component/Template/TemplateDumper.php)" to easy up dumping rendered content to a file
+    * added [CallableComplexFileBasedTemplateManager](https://github.com/bazzline/php_component_template/blob/3.1.0/source/Net/Bazzline/Component/Template/CallableComplexFileBasedTemplateManager.php) which allows registering callable to easy up reusing code and nest templates in templates
+    * added "[TemplateDumper](https://github.com/bazzline/php_component_template/blob/3.1.0/source/Net/Bazzline/Component/Template/TemplateDumper.php)" to easy up dumping rendered content to a file
     * easy up reading readme
 * [3.0.0](https://github.com/bazzline/php_component_template/tree/3.0.0) - released at 09.10.2015
     * added links to travis, scrutinizer, openhub, versioneye
