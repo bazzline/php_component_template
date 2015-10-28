@@ -41,30 +41,8 @@ class CallableComplexFileBasedTemplateManager extends ComplexFileBasedTemplate
      */
     public function registerCallable($name, $callable)
     {
-        $nameIsNotAString = (!is_string($name));
-
-        if ($nameIsNotAString) {
-            throw new InvalidArgumentException(
-                'name must be a valid string'
-            );
-        }
-
-        $isNotCallable = (!is_callable($callable));
-
-        if ($isNotCallable) {
-            throw new InvalidArgumentException(
-                'callable must be callable'
-            );
-        }
-
-        $callableAlreadyRegistered = $this->callableIsRegistered($name);
-
-        if ($callableAlreadyRegistered) {
-            throw new InvalidArgumentException(
-                'a callable with the name "' . $name . '" is already registered'
-            );
-        }
-
+        $this->validateStringOrThrowInvalidArgumentException($name, 'name');
+        $this->validateCallableOrThrowInvalidArgumentException($callable, $name);
         $this->nameToCallableCollection[$name] = $callable;
 
         return $this;
@@ -86,5 +64,45 @@ class CallableComplexFileBasedTemplateManager extends ComplexFileBasedTemplate
     private function getCallable($name)
     {
         return $this->nameToCallableCollection[$name];
+    }
+
+    /**
+     * @param callable $callable
+     * @param string $name
+     * @throws InvalidArgumentException
+     */
+    private function validateCallableOrThrowInvalidArgumentException($callable, $name)
+    {
+        $isNotCallable = (!is_callable($callable));
+
+        if ($isNotCallable) {
+            throw new InvalidArgumentException(
+                'callable must be callable'
+            );
+        }
+
+        $callableAlreadyRegistered = $this->callableIsRegistered($name);
+
+        if ($callableAlreadyRegistered) {
+            throw new InvalidArgumentException(
+                'a callable with the name "' . $name . '" is already registered'
+            );
+        }
+    }
+
+    /**
+     * @param string $string
+     * @param string $name
+     * @throws InvalidArgumentException
+     */
+    private function validateStringOrThrowInvalidArgumentException($string, $name)
+    {
+        $nameIsNotAString = (!is_string($name));
+
+        if ($nameIsNotAString) {
+            throw new InvalidArgumentException(
+                $name . ' must be a valid string'
+            );
+        }
     }
 }
