@@ -104,6 +104,7 @@ git clone https://github.com/bazzline/php_component_template .
     * @todo
         * add examples
         * add refuse/take/resign if needed and useful
+        * add registerCallable (also know as view helpers) to ComplexFileBasedTemplate (or extend ComplexFileBasedTemplate with an other class containing this functionality)
         * add unit tests
         * implement caching
         * implement easy way to nest template in template
