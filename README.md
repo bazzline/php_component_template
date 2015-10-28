@@ -122,6 +122,7 @@ composer require net_bazzline/php_component_template:dev-master
 * upcomming
     * @todo
         * add examples
+        * add download per months icon
         * add refuse/take/resign if needed and useful
         * add unit tests
         * implement caching
