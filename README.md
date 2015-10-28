@@ -150,4 +150,9 @@ git clone https://github.com/bazzline/php_component_template .
 * [ste](https://github.com/SugiPHP/STE)
 * [StringTemplate](https://github.com/nicmart/StringTemplate)
 * [twig](https://github.com/memio/twig-template-engine)
+* [php-array-view](https://github.com/huytbt/php-array-view)
 * [and even more ...](https://packagist.org/search/?search_query%5Bquery%5D=template+engine)
+
+# Final Words
+
+Star it if you like it :-). Add issues if you need it. Pull patches if you enjoy it. Write a blog entry if you use it :-D.
