@@ -31,6 +31,8 @@ Currently, this component tries to solve three problems when dealing with php te
 
 [ComplexFileBasedTemplate](https://github.com/bazzline/php_component_template/blob/master/source/Net/Bazzline/Component/Template/ComplexFileBasedTemplate.php) solves the problem replacing complex content stored in a file. This is commonly known as the view in php frameworks.
 
+[CallableComplexFileBasedTemplateManager](https://github.com/bazzline/php_component_template/blob/master/source/Net/Bazzline/Component/Template/CallableComplexFileBasedTemplateManager.php) solves the problem externalise reusable template tasks. This is commonly known as the view helper pattern.
+
 ## Notes
 
 ### What is a complex content?
@@ -44,6 +46,23 @@ if ($isFoo) {
 } else { 
     /*  ... something else */ 
 }
+```
+
+### What is a callable?
+
+Callable is an other word for the famous view helper design pattern.
+The template provides a method called "registerCallable" to register a callable and bind it to a name.
+
+```php
+//assuming the file in the relative path 'template.phtml' has the following content
+//<?php $this->foobar('foo', 'bar');
+$myViewHelper = function($foo, $bar) {
+    return 'there is no ' . $foo . ' without a ' . $bar;
+}
+$template = new CallableComplexFileBasedTemplateManager('template.phtml');
+$template->registerCallable('foobar', $myViewHelper);
+echo $template->render() . PHP_EOL;
+//expected result: there is no foo without a bar
 ```
 
 ### What kind of complex content should I use?
@@ -91,7 +110,7 @@ git clone https://github.com/bazzline/php_component_template .
 ## With [Packagist](https://packagist.org/packages/net_bazzline/php_component_template)
 
 ```
-    composer require net_bazzline/php_component_template:dev-master
+composer require net_bazzline/php_component_template:dev-master
 ```
 
 # API
@@ -104,10 +123,10 @@ git clone https://github.com/bazzline/php_component_template .
     * @todo
         * add examples
         * add refuse/take/resign if needed and useful
-        * add registerCallable (also know as view helpers) to ComplexFileBasedTemplate (or extend ComplexFileBasedTemplate with an other class containing this functionality)
         * add unit tests
         * implement caching
-        * implement easy way to nest template in template
+* [3.1.0](https://github.com/bazzline/php_component_template/tree/3.1.0) - released at 28.10.2015
+    * added [CallableComplexFileBasedTemplateManager](https://github.com/bazzline/php_component_template/blob/master/source/Net/Bazzline/Component/Template/CallableComplexFileBasedTemplateManager.php) which allows registering callable to easy up reusing code and nest templates in templates
     * added "[TemplateDumper](https://github.com/bazzline/php_component_template/blob/master/source/Net/Bazzline/Component/Template/TemplateDumper.php)" to easy up dumping rendered content to a file
     * easy up reading readme
 * [3.0.0](https://github.com/bazzline/php_component_template/tree/3.0.0) - released at 09.10.2015

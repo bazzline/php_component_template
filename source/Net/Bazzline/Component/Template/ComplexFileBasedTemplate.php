@@ -5,7 +5,6 @@
  */
 namespace Net\Bazzline\Component\Template;
 
-use InvalidArgumentException;
 use RuntimeException;
 
 class ComplexFileBasedTemplate extends AbstractFileBasedTemplate
