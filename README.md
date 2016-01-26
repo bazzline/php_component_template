@@ -7,7 +7,7 @@ The build status of the current master branch is tracked by Travis CI:
 [![Latest stable](https://img.shields.io/packagist/v/net_bazzline/php_component_template.svg)](https://packagist.org/packages/net_bazzline/php_component_template)
 
 The scrutinizer status are:
-[![code quality](https://scrutinizer-ci.com/g/bazzline/php_component_template/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bazzline/php_component_template/) | [![build status](https://scrutinizer-ci.com/g/bazzline/php_component_template/badges/build.png?b=master)](https://scrutinizer-ci.com/g/bazzline/php_component_template/)
+[![code quality](https://scrutinizer-ci.com/g/bazzline/php_component_template/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bazzline/php_component_template/)
 
 The versioneye status is:
 [![Dependency Status](https://www.versioneye.com/user/projects/56181f0cb06d5000090013f9/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56181f0cb06d5000090013f9)
