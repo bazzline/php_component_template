@@ -126,6 +126,8 @@ composer require net_bazzline/php_component_template:dev-master
         * add refuse/take/resign if needed and useful
         * add unit tests
         * implement caching
+* [3.1.2](https://github.com/bazzline/php_component_template/tree/3.1.2) - released at 26.01.2016
+    * updated dependencies
 * [3.1.1](https://github.com/bazzline/php_component_template/tree/3.1.1) - released at 11.12.2015
     * refactored CallableComplexFileBasedTemplateManager::registerCallable()
     * updated dependencies
