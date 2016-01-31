@@ -24,9 +24,9 @@
         }
     ],
     "autoload": {
-        "psr-0": {
-            "Net\\Bazzline\\Component\\Template": "source/",
-            "Test\\Net\\Bazzline\\Component\\Template": "test/"
+        "psr-4": {
+            "Net\\Bazzline\\Component\\Template\\": "source/",
+            "Test\\Net\\Bazzline\\Component\\Template\\": "test/"
         }
     },
     "scripts": {
