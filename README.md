@@ -127,6 +127,7 @@ composer require net_bazzline/php_component_template:dev-master
         * add unit tests
         * implement caching
     * added [zend-expressive-template](https://github.com/zendframework/zend-expressive-template) as suggested package
+    * added *TryToInstallZendExpressiveTemplate* command that installs zend-expressive-template if requirements are met in development mode
     * removed build von php 5.3.3
 * [3.1.2](https://github.com/bazzline/php_component_template/tree/3.1.2) - released at 26.01.2016
     * updated dependencies

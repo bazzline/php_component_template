@@ -29,5 +29,8 @@
             "Net\\Bazzline\\Component\\Template": "source/",
             "Test\\Net\\Bazzline\\Component\\Template": "test/"
         }
+    },
+    "scripts": {
+        "pre-dependencies-solving": "Net\\Bazzline\\Component\\Template\\TryToInstallZendExpressiveTemplate::execute"
     }
 }
