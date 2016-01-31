@@ -24,6 +24,7 @@ Personally, I like the [php-text-template](https://github.com/sebastianbergmann/
 ## Available Templates
 
 Currently, this component tries to solve three problems when dealing with php templates.
+All Templates are stackable, meaning you can assign one template key with another template instance.
 
 [RuntimeContentBasedTemplate](https://github.com/bazzline/php_component_template/blob/master/source/Net/Bazzline/Component/Template/RuntimeContentBasedTemplate.php) solve the problem to replacing content stored in a string.
 
@@ -86,6 +87,9 @@ $template->setContent('there is no {one} without a {two}');
 $template->assignOne('one', 'foo');
 //... or by providing an array
 $template->assignMany(array('one' => 'foo'));
+//you can also assign a template to a template
+//  this is used if a layout template is defined with a {content} key for e.g.
+$template->assignOne('content', $otherTemplate);
 
 //you can render it in different ways
 //1) explicit calling the method
@@ -125,11 +129,12 @@ composer require net_bazzline/php_component_template:dev-master
         * add download per months icon
         * add refuse/take/resign if needed and useful
         * add unit tests
-        * add StackableTemplate
         * implement caching
+* [3.1.3](https://github.com/bazzline/php_component_template/tree/3.1.3) - released at 31.01.2016
     * added [zend-expressive-template](https://github.com/zendframework/zend-expressive-template) as suggested package
     * added *TryToInstallZendExpressiveTemplate* command that installs zend-expressive-template if requirements are met in development mode
     * added building for php 7
+    * added test for stacking template into a template
     * moved to psr-4 auto loading
     * removed building for php 5.3.3
 * [3.1.2](https://github.com/bazzline/php_component_template/tree/3.1.2) - released at 26.01.2016

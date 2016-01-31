@@ -86,6 +86,19 @@ class RuntimeContentBasedTemplateTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($expectedContent, (string) $template);
     }
 
+    public function testStackTemplates()
+    {
+        $innerTemplate  = $this->getNewTemplate('inner: {inner_content}');
+        $outerTemplate  = $this->getNewTemplate('outer: {outer_content}');
+
+        $innerTemplate->assignOne('inner_content', 'foo');
+        $outerTemplate->assignOne('outer_content', $innerTemplate);
+
+        $content        = $outerTemplate->render();
+
+        $this->assertEquals('outer: inner: foo', $content);
+    }
+
     /**
      * @param null|string $content
      * @return RuntimeContentBasedTemplate
