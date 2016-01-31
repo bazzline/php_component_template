@@ -9,8 +9,7 @@
     },
     "require-dev": {
         "mikey179/vfsstream": "1.6.*",
-        "phpunit/phpunit": "~4.8||~5.0",
-        "zendframework/zend-expressive-template": "1.0.*"
+        "phpunit/phpunit": "~4.8||~5.0"
     },
     "suggest": {
         "zendframework/zend-expressive-template": "Standardize a template interface for multiple template engines"
