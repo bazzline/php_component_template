@@ -130,9 +130,11 @@ composer require net_bazzline/php_component_template:dev-master
         * add refuse/take/resign if needed and useful
         * add unit tests
         * implement caching
-        * add support for [zend-expressive-template](https://zendframework.github.io/zend-expressive/features/template/interface/)
         * add support for different template extensions
         * refactor internals and replace array data with array of immutable domain objects
+    * moved [zend-expressive-template](https://github.com/zendframework/zend-expressive-template) adapter code into [own repository](https://github.com/bazzline/php_zend_expressive_template_adapter)
+    * removed *TryToInstallZendExpressiveTemplate* command
+    * removed [zend-expressive-template](https://github.com/zendframework/zend-expressive-template) as suggested package
 * [3.1.3](https://github.com/bazzline/php_component_template/tree/3.1.3) - released at 31.01.2016
     * added [zend-expressive-template](https://github.com/zendframework/zend-expressive-template) as suggested package
     * added *TryToInstallZendExpressiveTemplate* command that installs zend-expressive-template if requirements are met in development mode

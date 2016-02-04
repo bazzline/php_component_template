@@ -11,9 +11,6 @@
         "mikey179/vfsstream": "1.6.*",
         "phpunit/phpunit": "~4.8||~5.0"
     },
-    "suggest": {
-        "zendframework/zend-expressive-template": "Standardize a template interface for multiple template engines"
-    },
     "license": "LGPLv3",
     "authors": [
         {
@@ -28,8 +25,5 @@
             "Net\\Bazzline\\Component\\Template\\": "source/",
             "Test\\Net\\Bazzline\\Component\\Template\\": "test/"
         }
-    },
-    "scripts": {
-        "pre-dependencies-solving": "Net\\Bazzline\\Component\\Template\\TryToInstallZendExpressiveTemplate::execute"
     }
 }
