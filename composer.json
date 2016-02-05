@@ -23,6 +23,10 @@
     "autoload": {
         "psr-4": {
             "Net\\Bazzline\\Component\\Template\\": "source/",
+        }
+    },
+    "autoload-dev": {
+      "psr-4": {
             "Test\\Net\\Bazzline\\Component\\Template\\": "test/"
         }
     }
