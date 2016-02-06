@@ -2,6 +2,7 @@
     "name": "net_bazzline/php_component_template",
     "description": "free as in freedom free software template engine for php",
     "keywords": [
+        "bazzline",
         "php",
         "psr",
         "psr-4",
