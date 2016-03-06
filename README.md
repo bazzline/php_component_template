@@ -26,13 +26,13 @@ Personally, I like the [php-text-template](https://github.com/sebastianbergmann/
 Currently, this component tries to solve three problems when dealing with php templates.
 All Templates are stackable, meaning you can assign one template key with another template instance.
 
-[RuntimeContentBasedTemplate](https://github.com/bazzline/php_component_template/blob/master/source/Net/Bazzline/Component/Template/RuntimeContentBasedTemplate.php) solve the problem to replacing content stored in a string.
+[RuntimeContentBasedTemplate](https://github.com/bazzline/php_component_template/blob/master/source/RuntimeContentBasedTemplate.php) solve the problem to replacing content stored in a string.
 
-[FileBasedTemplate](https://github.com/bazzline/php_component_template/blob/master/source/Net/Bazzline/Component/Template/FileBasedTemplate.php) solves the problem replacing content stored in a file.
+[FileBasedTemplate](https://github.com/bazzline/php_component_template/blob/master/source/FileBasedTemplate.php) solves the problem replacing content stored in a file.
 
-[ComplexFileBasedTemplate](https://github.com/bazzline/php_component_template/blob/master/source/Net/Bazzline/Component/Template/ComplexFileBasedTemplate.php) solves the problem replacing complex content stored in a file. This is commonly known as the view in php frameworks.
+[ComplexFileBasedTemplate](https://github.com/bazzline/php_component_template/blob/master/source/ComplexFileBasedTemplate.php) solves the problem replacing complex content stored in a file. This is commonly known as the view in php frameworks.
 
-[CallableComplexFileBasedTemplateManager](https://github.com/bazzline/php_component_template/blob/master/source/Net/Bazzline/Component/Template/CallableComplexFileBasedTemplateManager.php) solves the problem externalise reusable template tasks. This is commonly known as the view helper pattern.
+[CallableComplexFileBasedTemplateManager](https://github.com/bazzline/php_component_template/blob/master/source/CallableComplexFileBasedTemplateManager.php) solves the problem externalise reusable template tasks. This is commonly known as the view helper pattern.
 
 ## Notes
 
